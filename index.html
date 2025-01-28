@@ -3,9 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Update CSP to include supabase and fix script-src -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https: 'unsafe-inline' 'unsafe-eval'; connect-src 'self' https://www.googleapis.com https://*.supabase.co; img-src 'self' https: data:; media-src 'self' https:; script-src 'self' https: 'unsafe-inline' 'unsafe-eval' https://www.youtube.com https://s.ytimg.com https://www.googleapis.com https://*.supabase.co https://unpkg.com; frame-src https: 'self' https://www.youtube.com https://www.youtube-nocookie.com https://www.youtube.com/embed/*;">
+    
     <title>Tales & Lores - YouTube Channel</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <!-- Add after other links -->
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.css' rel='stylesheet' />
+    <!-- Add this line after your existing meta tags -->
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Add this before your script.js -->
+    <!-- Move YouTube API script just before closing body tag -->
+    <!-- Remove from here: <script src="https://www.youtube.com/iframe_api"></script> -->
 </head>
 <body>
     <header>
@@ -23,10 +36,13 @@
     </header>
 
     <section id="home" class="hero">
+        <video autoplay muted loop playsinline id="myVideo">
+            <source src="videos/background.mp4" type="video/mp4">
+        </video>
         <div class="hero-content">
             <h1>Welcome to Tales & Lores</h1>
             <p>Exploring fascinating stories and ancient legends</p>
-            <div class="button-container">
+            <div class="button-group">
                 <a href="https://www.youtube.com/@TalesLores?sub_confirmation=1" class="cta-button">Subscribe Now</a>
                 <a href="https://buymeacoffee.com/talesandlores" class="cta-button coffee-btn">Buy Me a Coffee</a>
             </div>
@@ -98,14 +114,24 @@
             </div>
         </div>
     </section>
-
+    <!-- Remove entire Stories section and directly go to About section -->
     <section id="about" class="about">
-        <h2>About Tales & Lores</h2>
+        <h2>ABOUT TALES & LORES</h2>
         <div class="about-content">
-            <p>Tales & Lores is dedicated to bringing you the most fascinating stories and legends from around the world. We explore myths, folklore, and historical tales that have shaped cultures and civilizations.</p>
+            
+            <p>Tales & Lores is dedicated to bringing you the most fascinating stories and legends from around the world. From ancient myths and timeless folklore to historical moments that shaped civilizations, we dive deep into the tales that connect us all.</p>
+            
+            <p>But we don't just tell stories – we reimagine them. Using cutting-edge AI technology, we bring these legends to life with a cinematic twist that makes the past feel alive, vibrant, and totally unforgettable. 🎥✨</p>
+            
+            <p>Whether it's uncovering the mysteries of lost civilizations, exploring cultural folklore, or shining a new light on legendary events, we're here to inspire curiosity, wonder, and a little bit of awe.</p>
+            
+            <p>So, grab a seat, hit play, and let's explore the stories that shaped our world – and the ones that still give us chills.</p>
+            
+            <p>Catch our latest tales on <a href="https://www.youtube.com/@TalesLores" target="_blank">YouTube</a> and be part of the adventure.</p>
         </div>
     </section>
 
+    <!-- Restore Contact section here -->
     <section id="contact" class="contact">
         <h2>Connect With Us</h2>
         <div class="social-links">
@@ -114,12 +140,16 @@
             <a href="https://www.instagram.com/tales.lore/" class="social-icon"><i class="fab fa-instagram"></i></a>
             <a href="https://www.tiktok.com/@tales.lore" class="social-icon"><i class="fab fa-tiktok"></i></a>
             <a href="https://www.facebook.com/talesandlores" class="social-icon"><i class="fab fa-facebook"></i></a>
+            <a href="https://www.reddit.com/r/talesandlores/" class="social-icon"><i class="fab fa-reddit"></i></a>
         </div>
     </section>
 
     <footer>
         <p>&copy; 2025 Tales & Lores. All rights reserved.</p>
     </footer>
-    <script src="script.js"></script>
+    <!-- Add YouTube API script before your main script -->
+    <!-- Add this right before the closing </body> tag -->
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <script src="script.js" type="module"></script>
 </body>
 </html>
